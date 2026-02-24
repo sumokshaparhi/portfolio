@@ -14,10 +14,12 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://sumoksha-portfolio.vercel.app"),
+
   title: {
     default: "Sumoksha Parhi | Machine Learning Engineer",
     template: "%s | Sumoksha Parhi",
   },
+
   description:
     "Machine Learning Engineer specializing in LLM systems, AI microservices, model deployment, and scalable cloud infrastructure using Python, Go, AWS, Azure, and GCP.",
 
@@ -41,6 +43,14 @@ export const metadata: Metadata = {
     siteName: "Sumoksha Portfolio",
     locale: "en_US",
     type: "website",
+    images: [
+      {
+        url: "/og.png",
+        width: 1200,
+        height: 630,
+        alt: "Sumoksha Parhi - Machine Learning Engineer",
+      },
+    ],
   },
 
   twitter: {
@@ -48,6 +58,7 @@ export const metadata: Metadata = {
     title: "Sumoksha Parhi | Machine Learning Engineer",
     description:
       "LLM Systems • AI Microservices • Scalable Cloud Deployments",
+    images: ["/og.png"],
   },
 
   authors: [{ name: "Sumoksha Parhi" }],
