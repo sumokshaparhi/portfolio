@@ -38,13 +38,12 @@ export const metadata: Metadata = {
   ],
 
   openGraph: {
+    type: "website",
+    url: "https://sumoksha-portfolio.vercel.app",
     title: "Sumoksha Parhi | Machine Learning Engineer",
     description:
       "Machine Learning Engineer building production-grade LLM systems, AI microservices, scalable cloud deployments, and high-performance backend architectures using Python, Go, AWS, Azure, and GCP.",
-    url: "https://sumoksha-portfolio.vercel.app",
     siteName: "Sumoksha Portfolio",
-    locale: "en_US",
-    type: "website",
     images: [
       {
         url: "/og.png",
@@ -75,7 +74,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-[#0f0f0f] text-white`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased text-white`}
       >
         {children}
       </body>
