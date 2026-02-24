@@ -1,22 +1,33 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 export default function CursorGlow() {
+  const [position, setPosition] = useState({ x: 0, y: 0 });
+
   useEffect(() => {
     const move = (e: MouseEvent) => {
-      const glow = document.body;
-      glow.style.setProperty("--x", `${e.clientX}px`);
-      glow.style.setProperty("--y", `${e.clientY}px`);
-      glow.style.setProperty(
-        "background",
-        `radial-gradient(circle at ${e.clientX}px ${e.clientY}px, rgba(99,102,241,0.15), transparent 60%)`
-      );
+      setPosition({ x: e.clientX, y: e.clientY });
     };
 
     window.addEventListener("mousemove", move);
     return () => window.removeEventListener("mousemove", move);
   }, []);
 
-  return null;
+  return (
+    <div
+      style={{
+        position: "fixed",
+        top: position.y,
+        left: position.x,
+        width: 400,
+        height: 400,
+        pointerEvents: "none",
+        transform: "translate(-50%, -50%)",
+        background:
+          "radial-gradient(circle, rgba(99,102,241,0.12) 0%, transparent 70%)",
+        zIndex: -1,
+      }}
+    />
+  );
 }
