@@ -5,13 +5,13 @@ import { motion } from "framer-motion";
 export default function Hero() {
   return (
     <motion.section
-      className="min-h-[90vh] flex flex-col items-center justify-center px-6 text-center pt-24"
+      className="min-h-screen flex flex-col items-center justify-center px-6 text-center"
       initial={{ opacity: 0, y: 40 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8 }}
     >
       <motion.h1
-        className="text-5xl md:text-6xl font-bold"
+        className="text-5xl md:text-6xl font-bold tracking-tight"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.2, duration: 0.8 }}
@@ -38,18 +38,31 @@ export default function Hero() {
       </motion.p>
 
       <motion.div
-        className="mt-10 flex gap-6"
+        className="mt-10 flex gap-6 flex-wrap justify-center"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.8, duration: 0.8 }}
       >
-        <button className="bg-blue-600 px-6 py-3 rounded-lg hover:bg-blue-500 transition">
+        {/* Scroll to Projects */}
+        <motion.a
+          href="#projects"
+          className="bg-blue-600 px-6 py-3 rounded-lg hover:bg-blue-500 transition"
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+        >
           View Work
-        </button>
+        </motion.a>
 
-        <button className="border border-gray-600 px-6 py-3 rounded-lg hover:border-blue-500 transition">
+        {/* Download Resume */}
+        <motion.a
+          href="/resume.pdf"
+          download
+          className="border border-gray-600 px-6 py-3 rounded-lg hover:border-blue-500 transition"
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+        >
           Download Resume
-        </button>
+        </motion.a>
       </motion.div>
     </motion.section>
   );

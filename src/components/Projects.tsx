@@ -27,8 +27,8 @@ export default function Projects() {
   ];
 
   return (
-    <section id="projects" className="py-24 px-6 max-w-6xl mx-auto">
-      <h2 className="text-3xl md:text-4xl font-semibold mb-12">
+    <section id="projects" className="py-28 px-6 max-w-6xl mx-auto">
+      <h2 className="text-3xl md:text-4xl font-semibold mb-12 text-center">
         Projects
       </h2>
 
@@ -36,7 +36,7 @@ export default function Projects() {
         {projects.map((project, index) => (
           <motion.div
             key={index}
-            className="bg-[#161616] border border-gray-800 rounded-xl p-6 hover:border-blue-500 transition"
+            className="bg-[#161616] border border-gray-800 rounded-xl p-6 hover:border-blue-500 transition duration-300"
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: index * 0.1 }}
@@ -46,7 +46,7 @@ export default function Projects() {
               {project.title}
             </h3>
 
-            <p className="text-gray-400 mb-4">
+            <p className="text-gray-400 mb-4 leading-relaxed">
               {project.desc}
             </p>
 
