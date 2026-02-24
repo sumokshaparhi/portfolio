@@ -21,7 +21,7 @@ export const metadata: Metadata = {
   },
 
   description:
-    "Machine Learning Engineer specializing in LLM systems, AI microservices, model deployment, and scalable cloud infrastructure using Python, Go, AWS, Azure, and GCP.",
+    "Machine Learning Engineer building production-grade LLM systems, AI microservices, scalable cloud deployments, and high-performance backend architectures using Python, Go, AWS, Azure, and GCP.",
 
   keywords: [
     "Sumoksha Parhi",
@@ -33,12 +33,14 @@ export const metadata: Metadata = {
     "MCP Architecture",
     "FastAPI",
     "AWS",
+    "Azure",
+    "GCP",
   ],
 
   openGraph: {
     title: "Sumoksha Parhi | Machine Learning Engineer",
     description:
-      "Production-grade LLM systems, AI microservices, and scalable cloud deployments.",
+      "Machine Learning Engineer building production-grade LLM systems, AI microservices, scalable cloud deployments, and high-performance backend architectures using Python, Go, AWS, Azure, and GCP.",
     url: "https://sumoksha-portfolio.vercel.app",
     siteName: "Sumoksha Portfolio",
     locale: "en_US",
@@ -57,11 +59,12 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Sumoksha Parhi | Machine Learning Engineer",
     description:
-      "LLM Systems • AI Microservices • Scalable Cloud Deployments",
+      "Production-grade LLM systems • AI microservices • Scalable cloud infrastructure • Go & Python backend engineering.",
     images: ["/og.png"],
   },
 
   authors: [{ name: "Sumoksha Parhi" }],
+  creator: "Sumoksha Parhi",
 };
 
 export default function RootLayout({
