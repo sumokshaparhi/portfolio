@@ -1,52 +1,73 @@
+"use client";
+
+import { motion } from "framer-motion";
+
+const skillCategories = [
+  {
+    title: "Languages",
+    skills: ["Python", "Go"],
+  },
+  {
+    title: "AI / ML",
+    skills: ["PyTorch", "TensorFlow", "Scikit-learn", "Hugging Face"],
+  },
+  {
+    title: "LLM & NLP",
+    skills: ["LLM Fine-Tuning", "MCP Architecture", "Word2Vec", "FastText"],
+  },
+  {
+    title: "Backend",
+    skills: ["FastAPI", "REST APIs", "Microservices"],
+  },
+  {
+    title: "Cloud & DevOps",
+    skills: ["AWS", "Azure", "GCP", "Docker"],
+  },
+  {
+    title: "Data & Tools",
+    skills: ["OpenCV", "Web Scraping", "QGIS"],
+  },
+];
+
 export default function Skills() {
   return (
-    <section id="skills" className="py-24 px-6 max-w-6xl mx-auto">
-      <h2 className="text-3xl md:text-4xl font-semibold mb-12">
+    <section id="skills" className="py-32 px-6 max-w-6xl mx-auto">
+      <motion.h2
+        className="text-4xl font-semibold mb-20 text-center bg-gradient-to-r from-indigo-400 to-purple-500 bg-clip-text text-transparent"
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+        viewport={{ once: true }}
+      >
         Technical Skills
-      </h2>
+      </motion.h2>
 
-      <div className="grid md:grid-cols-3 gap-8">
+      <div className="grid md:grid-cols-2 gap-16">
+        {skillCategories.map((category, index) => (
+          <motion.div
+            key={index}
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: index * 0.08 }}
+            viewport={{ once: true }}
+            className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-8 hover:border-indigo-500/30 transition duration-500"
+          >
+            <h3 className="text-xl font-semibold mb-6 text-indigo-400">
+              {category.title}
+            </h3>
 
-        <div>
-          <h3 className="text-lg font-semibold mb-4 text-white">Languages</h3>
-          <p className="text-gray-400">Python · Go</p>
-        </div>
-
-        <div>
-          <h3 className="text-lg font-semibold mb-4 text-white">AI / ML</h3>
-          <p className="text-gray-400">
-            PyTorch · TensorFlow · Scikit-learn · Hugging Face
-          </p>
-        </div>
-
-        <div>
-          <h3 className="text-lg font-semibold mb-4 text-white">LLM & NLP</h3>
-          <p className="text-gray-400">
-            LLM Fine-tuning · MCP · Word2Vec · FastText
-          </p>
-        </div>
-
-        <div>
-          <h3 className="text-lg font-semibold mb-4 text-white">Backend</h3>
-          <p className="text-gray-400">
-            FastAPI · REST APIs · Microservices
-          </p>
-        </div>
-
-        <div>
-          <h3 className="text-lg font-semibold mb-4 text-white">Cloud & DevOps</h3>
-          <p className="text-gray-400">
-            AWS · Azure · GCP · Docker
-          </p>
-        </div>
-
-        <div>
-          <h3 className="text-lg font-semibold mb-4 text-white">Data & Tools</h3>
-          <p className="text-gray-400">
-            OpenCV · Web Scraping · QGIS
-          </p>
-        </div>
-
+            <div className="flex flex-wrap gap-3">
+              {category.skills.map((skill, i) => (
+                <span
+                  key={i}
+                  className="text-sm px-4 py-2 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-300 hover:bg-indigo-500/20 hover:border-indigo-400 transition duration-300"
+                >
+                  {skill}
+                </span>
+              ))}
+            </div>
+          </motion.div>
+        ))}
       </div>
     </section>
   );
