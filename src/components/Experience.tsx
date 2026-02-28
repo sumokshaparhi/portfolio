@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import SectionWrapper from "../components/SectionWrapper";
 
 const experiences = [
   {
@@ -30,7 +30,7 @@ const experiences = [
     period: "Jul 2023 – Aug 2023",
     points: [
       "Built content-based recommendation system using NLP.",
-      "Designed scraping and preprocessing pipelines for large datasets.",
+      "Designed scraping and preprocessing pipelines.",
       "Implemented Word2Vec and FastText embeddings.",
     ],
   },
@@ -38,43 +38,26 @@ const experiences = [
 
 export default function Experience() {
   return (
-    <section id="experience" className="py-32 px-6 max-w-5xl mx-auto relative">
-      {/* Section Title */}
-      <motion.h2
-        className="text-4xl font-semibold mb-20 text-center bg-gradient-to-r from-indigo-400 to-purple-500 bg-clip-text text-transparent"
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
-        viewport={{ once: true }}
-      >
+    <SectionWrapper className="py-32 px-6 max-w-5xl mx-auto relative" id="experience">
+      
+      <h2 className="text-4xl font-semibold mb-20 text-center bg-gradient-to-r from-indigo-400 to-purple-500 bg-clip-text text-transparent">
         Experience
-      </motion.h2>
+      </h2>
 
-      {/* Timeline Container */}
       <div className="relative">
-        {/* Vertical Line */}
         <div className="absolute left-6 top-0 bottom-0 w-px bg-gradient-to-b from-indigo-500/40 via-indigo-500/20 to-transparent" />
 
         <div className="space-y-20">
           {experiences.map((exp, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, x: -40 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
-              viewport={{ once: true }}
-              className="relative pl-20"
-            >
-              {/* Glowing Dot — LOCKED TO LINE */}
+            <div key={index} className="relative pl-20">
+
               <div className="absolute left-[18px] top-6 z-10">
                 <div className="w-4 h-4 rounded-full bg-indigo-500 shadow-[0_0_20px_rgba(99,102,241,0.9)]" />
               </div>
 
-              {/* Experience Card */}
               <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-xl p-8 shadow-[0_0_60px_rgba(99,102,241,0.05)] hover:shadow-[0_0_80px_rgba(99,102,241,0.15)] transition duration-500">
                 <h3 className="text-xl font-semibold">
-                  {exp.role} —{" "}
-                  <span className="text-indigo-400">{exp.company}</span>
+                  {exp.role} — <span className="text-indigo-400">{exp.company}</span>
                 </h3>
 
                 <p className="text-sm text-gray-400 mb-4">{exp.period}</p>
@@ -85,10 +68,12 @@ export default function Experience() {
                   ))}
                 </ul>
               </div>
-            </motion.div>
+
+            </div>
           ))}
         </div>
       </div>
-    </section>
+
+    </SectionWrapper>
   );
 }

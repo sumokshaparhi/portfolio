@@ -1,38 +1,21 @@
 "use client";
 
-import { motion } from "framer-motion";
+import SectionWrapper from "../components/SectionWrapper";
 
 export default function Contact() {
   return (
-    <section id="contact" className="py-32 px-6 max-w-4xl mx-auto text-center">
-      <motion.h2
-        className="text-4xl font-semibold mb-8"
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
-        viewport={{ once: true }}
-      >
-        Let’s Connect
-      </motion.h2>
+    <SectionWrapper className="py-32 px-6 max-w-4xl mx-auto text-center" id="contact">
 
-      <motion.p
-        className="text-gray-400 mb-12 max-w-xl mx-auto"
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        transition={{ delay: 0.2, duration: 0.6 }}
-        viewport={{ once: true }}
-      >
+      <h2 className="text-4xl font-semibold mb-8">
+        Let’s Connect
+      </h2>
+
+      <p className="text-gray-400 mb-12 max-w-xl mx-auto">
         Open to ML / LLM engineering roles, research collaborations,
         and high-impact AI system projects.
-      </motion.p>
+      </p>
 
-      <motion.div
-        className="flex flex-wrap justify-center gap-6"
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        transition={{ delay: 0.4, duration: 0.6 }}
-        viewport={{ once: true }}
-      >
+      <div className="flex flex-wrap justify-center gap-6">
         <a
           href="mailto:parhisumoksha7327@gmail.com"
           className="bg-gradient-to-r from-blue-600 to-purple-600 px-6 py-3 rounded-lg shadow-lg shadow-blue-600/30 hover:opacity-90 transition"
@@ -55,7 +38,8 @@ export default function Contact() {
         >
           GitHub
         </a>
-      </motion.div>
-    </section>
+      </div>
+
+    </SectionWrapper>
   );
 }
