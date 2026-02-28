@@ -1,48 +1,43 @@
 "use client";
 
+import { motion } from "framer-motion";
 import SectionWrapper from "../components/SectionWrapper";
 
 const skillCategories = [
-  {
-    title: "Languages",
-    skills: ["Python", "Go"],
-  },
-  {
-    title: "AI / ML",
-    skills: ["PyTorch", "TensorFlow", "Scikit-learn", "Hugging Face"],
-  },
-  {
-    title: "LLM & NLP",
-    skills: ["LLM Fine-Tuning", "MCP Architecture", "Word2Vec", "FastText"],
-  },
-  {
-    title: "Backend",
-    skills: ["FastAPI", "REST APIs", "Microservices"],
-  },
-  {
-    title: "Cloud & DevOps",
-    skills: ["AWS", "Azure", "GCP", "Docker"],
-  },
-  {
-    title: "Data & Tools",
-    skills: ["OpenCV", "Web Scraping", "QGIS"],
-  },
+  { title: "Languages", skills: ["Python", "Go"] },
+  { title: "AI / ML", skills: ["PyTorch", "TensorFlow", "Scikit-learn", "Hugging Face"] },
+  { title: "LLM & NLP", skills: ["LLM Fine-Tuning", "MCP Architecture", "Word2Vec", "FastText"] },
+  { title: "Backend", skills: ["FastAPI", "REST APIs", "Microservices"] },
+  { title: "Cloud & DevOps", skills: ["AWS", "Azure", "GCP", "Docker"] },
+  { title: "Data & Tools", skills: ["OpenCV", "Web Scraping", "QGIS"] },
 ];
 
 export default function Skills() {
   return (
-    <SectionWrapper
-      id="skills"
-      className="py-32 px-6 max-w-6xl mx-auto"
-    >
+    <SectionWrapper id="skills" className="py-32 px-6 max-w-6xl mx-auto">
       <h2 className="text-4xl font-semibold mb-20 text-center bg-gradient-to-r from-indigo-400 to-purple-500 bg-clip-text text-transparent">
         Technical Skills
       </h2>
 
-      <div className="grid md:grid-cols-2 gap-16">
+      <motion.div
+        className="grid md:grid-cols-2 gap-16"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        variants={{
+          visible: {
+            transition: { staggerChildren: 0.12 },
+          },
+        }}
+      >
         {skillCategories.map((category, index) => (
-          <div
+          <motion.div
             key={index}
+            variants={{
+              hidden: { opacity: 0, y: 30 },
+              visible: { opacity: 1, y: 0 },
+            }}
+            transition={{ duration: 0.5 }}
             className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-8 hover:border-indigo-500/30 transition duration-500"
           >
             <h3 className="text-xl font-semibold mb-6 text-indigo-400">
@@ -59,9 +54,9 @@ export default function Skills() {
                 </span>
               ))}
             </div>
-          </div>
+          </motion.div>
         ))}
-      </div>
+      </motion.div>
     </SectionWrapper>
   );
 }
