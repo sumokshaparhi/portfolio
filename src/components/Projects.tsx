@@ -6,7 +6,7 @@ import SectionWrapper from "../components/SectionWrapper";
 const projects = [
   {
     title: "LLM Fine-Tuning & MCP Architecture",
-    desc: "Designed production-grade LLM fine-tuning pipelines and implemented scalable Model Context Protocol (MCP) architectures enabling dynamic tool invocation and real-time AI voice agent workflows.",
+    desc: "Designed production-grade LLM fine-tuning pipelines and implemented scalable MCP architectures enabling dynamic tool invocation and real-time AI workflows.",
     tech: ["Hugging Face", "FastAPI", "Go", "AWS", "Azure", "GCP"],
   },
   {
@@ -33,24 +33,13 @@ export default function Projects() {
         Projects
       </h2>
 
-      <motion.div
-        className="grid md:grid-cols-2 gap-12"
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true }}
-        variants={{
-          visible: {
-            transition: { staggerChildren: 0.15 },
-          },
-        }}
-      >
+      <div className="grid md:grid-cols-2 gap-12">
         {projects.map((project, index) => (
           <motion.div
             key={index}
-            variants={{
-              hidden: { opacity: 0, y: 40 },
-              visible: { opacity: 1, y: 0 },
-            }}
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.25 }}
             transition={{ duration: 0.6 }}
             className="group relative bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-8 transition duration-500 hover:border-indigo-500/40 hover:shadow-[0_0_80px_rgba(99,102,241,0.15)]"
           >
@@ -76,7 +65,7 @@ export default function Projects() {
             </div>
           </motion.div>
         ))}
-      </motion.div>
+      </div>
     </SectionWrapper>
   );
 }

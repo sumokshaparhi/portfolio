@@ -19,25 +19,14 @@ export default function Skills() {
         Technical Skills
       </h2>
 
-      <motion.div
-        className="grid md:grid-cols-2 gap-16"
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true }}
-        variants={{
-          visible: {
-            transition: { staggerChildren: 0.12 },
-          },
-        }}
-      >
+      <div className="grid md:grid-cols-2 gap-16">
         {skillCategories.map((category, index) => (
           <motion.div
             key={index}
-            variants={{
-              hidden: { opacity: 0, y: 30 },
-              visible: { opacity: 1, y: 0 },
-            }}
-            transition={{ duration: 0.5 }}
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.25 }}
+            transition={{ duration: 0.6 }}
             className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-8 hover:border-indigo-500/30 transition duration-500"
           >
             <h3 className="text-xl font-semibold mb-6 text-indigo-400">
@@ -56,7 +45,7 @@ export default function Skills() {
             </div>
           </motion.div>
         ))}
-      </motion.div>
+      </div>
     </SectionWrapper>
   );
 }
