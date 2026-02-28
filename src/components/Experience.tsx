@@ -49,7 +49,9 @@ export default function Experience() {
         Experience
       </motion.h2>
 
-      <div className="relative border-l border-white/10 pl-10 space-y-16">
+      {/* Gradient Timeline Line */}
+      <div className="relative pl-10 space-y-20 before:absolute before:left-0 before:top-0 before:h-full before:w-[2px] before:bg-gradient-to-b before:from-indigo-500/40 before:via-purple-500/20 before:to-transparent">
+
         {experiences.map((exp, index) => (
           <motion.div
             key={index}
@@ -59,23 +61,27 @@ export default function Experience() {
             viewport={{ once: true }}
             className="relative"
           >
-            {/* Glowing Dot */}
-            <div className="absolute -left-[13px] top-2 w-5 h-5 bg-indigo-500 rounded-full shadow-[0_0_15px_rgba(99,102,241,0.8)]" />
+            {/* Pulsing Timeline Dot */}
+            <div className="absolute -left-[9px] top-3 w-4 h-4 rounded-full bg-indigo-500 shadow-[0_0_20px_rgba(99,102,241,0.9)] animate-pulse" />
 
             {/* Glass Card */}
             <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-xl p-8 shadow-[0_0_60px_rgba(99,102,241,0.05)] hover:shadow-[0_0_80px_rgba(99,102,241,0.15)] transition duration-500">
+
               <h3 className="text-xl font-semibold">
                 {exp.role} —{" "}
                 <span className="text-indigo-400">{exp.company}</span>
               </h3>
 
-              <p className="text-sm text-gray-400 mb-4">{exp.period}</p>
+              <p className="text-sm text-gray-400 mb-5">
+                {exp.period}
+              </p>
 
-              <ul className="space-y-2 text-gray-300">
+              <ul className="space-y-3 text-gray-300 leading-relaxed">
                 {exp.points.map((point, i) => (
                   <li key={i}>• {point}</li>
                 ))}
               </ul>
+
             </div>
           </motion.div>
         ))}
