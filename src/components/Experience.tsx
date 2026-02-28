@@ -1,6 +1,7 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { useRef } from "react";
 import SectionWrapper from "../components/SectionWrapper";
 
 const experiences = [
@@ -38,6 +39,15 @@ const experiences = [
 ];
 
 export default function Experience() {
+  const ref = useRef(null);
+
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start end", "end start"],
+  });
+
+  const lineHeight = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
+
   return (
     <SectionWrapper
       id="experience"
@@ -47,34 +57,42 @@ export default function Experience() {
         Experience
       </h2>
 
-      <div className="relative">
-        {/* Vertical Line */}
-        <div className="absolute left-6 top-0 bottom-0 w-px bg-gradient-to-b from-indigo-500/40 via-indigo-500/20 to-transparent" />
+      <div ref={ref} className="relative">
+        {/* Animated Vertical Line */}
+        <div className="absolute left-6 top-0 bottom-0 w-px bg-white/10" />
 
         <motion.div
-          className="space-y-20"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          variants={{
-            visible: {
-              transition: { staggerChildren: 0.2 },
-            },
-          }}
-        >
+          style={{ height: lineHeight }}
+          className="absolute left-6 top-0 w-px bg-gradient-to-b from-indigo-500 via-purple-500 to-transparent"
+        />
+
+        <div className="space-y-20">
           {experiences.map((exp, index) => (
             <motion.div
               key={index}
-              variants={{
-                hidden: { opacity: 0, x: -40 },
-                visible: { opacity: 1, x: 0 },
-              }}
+              initial={{ opacity: 0, x: -40 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
               transition={{ duration: 0.6 }}
               className="relative pl-20"
             >
-              {/* Glowing Dot */}
+              {/* Pulsing Glowing Dot */}
               <div className="absolute left-[18px] top-6 z-10">
-                <div className="w-4 h-4 rounded-full bg-indigo-500 shadow-[0_0_20px_rgba(99,102,241,0.9)]" />
+                <motion.div
+                  animate={{
+                    boxShadow: [
+                      "0 0 10px rgba(99,102,241,0.6)",
+                      "0 0 25px rgba(139,92,246,0.9)",
+                      "0 0 10px rgba(99,102,241,0.6)",
+                    ],
+                  }}
+                  transition={{
+                    duration: 2,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                  }}
+                  className="w-4 h-4 rounded-full bg-indigo-500"
+                />
               </div>
 
               {/* Card */}
@@ -94,7 +112,7 @@ export default function Experience() {
               </div>
             </motion.div>
           ))}
-        </motion.div>
+        </div>
       </div>
     </SectionWrapper>
   );
